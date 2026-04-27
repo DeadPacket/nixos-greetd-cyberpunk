@@ -1,0 +1,14 @@
+# Nix / system
+result
+result-*
+
+# Logs
+*.log
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
