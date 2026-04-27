@@ -1,0 +1,15 @@
+\e[1;36m==============================================\e[0m
+\e[1;35m               [NEXUS NODE-01]                \e[0m
+\e[1;36m----------------------------------------------\e[0m
+
+\e[1;34m        Secure Authentication Interface       \e[0m
+
+\e[1;32m System Status:\e[0m ONLINE
+\e[1;32m Integrity Check:\e[0m PASSED
+
+Time: \l
+
+\e[1;31m Authorized Access Only.\e[0m
+\e[1;31m All Activity Is Monitored.\e[0m
+\e[1;36m==============================================\e[0m
+

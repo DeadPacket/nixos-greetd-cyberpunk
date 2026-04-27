@@ -1,0 +1,24 @@
+#############################################
+##          GREETD CONFIGURATION           ##
+#############################################
+#  security.pam.services.greetd.enableGnomeKeyring = true;
+  services.greetd = {
+     enable = true;
+
+     settings = {
+	default_session = {
+	  command = ''
+	     ${pkgs.tuigreet}/bin/tuigreet \
+		--time \
+		--time-format "%Y-%m-%d %H:%M:%S" \
+		--remember \
+		--asterisks \
+		--greeting "AUTHENTICATION REQUIRED" \
+		--window-padding 4 \
+		--container-padding 2 \
+		--cmd startx
+	  '';
+	  user = "greeter";
+	};
+     };
+  };
