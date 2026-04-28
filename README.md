@@ -3,6 +3,13 @@
 ## Overview
 This project implements a minimal, security-conscious login system on NixOS using greetd and tuigreet, replacing traditional graphical display managers. The goal was to design a clean, reproducible, and low attack surface authentication flow while maintaining a cohesive cyberpunk-inspired terminal aesthetic.
 
+## Screenshots
+  Login Screen (greetd + tuigreet)
+  - ![Login Screen](./Screenshots/greetd_tuigreet_loginscreen.jpeg)
+
+  i3 Desktop
+  - ![i3 Desktop](./Screenshots/i3.png)
+
 This project demonstrates:
   - Linux system design and debugging
   - Display manager replacement and customization
@@ -16,13 +23,6 @@ This project demonstrates:
   - Controlled session startup (startx -> i3)
   - Fully declarative NixOS configuration
   - Consistent cyberpunk-inspired terminal styling
-
-## Screenshots
-  Login Screen (greetd + tuigreet)
-  - ![Login Screen](./Screenshots/greetd_tuigreet_loginscreen.jpeg)
-
-  i3 Desktop
-  - ![i3 Desktop](./Screenshots/i3.png)
 
 ## Security Design & Considerations
 1. Minimal Display Stack
