@@ -66,6 +66,14 @@ This project demonstrates:
 
 These trade-offs were intentionally accepted to prioritize security, transparency, and system control.
 
+## Real-World Relevance
+The design choices in this project reflect practices used in:
+  - Hardened Linux environments where minimal services are preferred
+  - Server systems that avoid unnecessary graphical components
+  - Security-focused setups that prioritize reduced attack surface
+
+While simplified, the same principles apply to production systems where control, transparency, and reliability are critical.
+
 ## Setup/Usage
 1. Enable greetd
 
