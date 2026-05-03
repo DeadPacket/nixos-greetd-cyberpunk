@@ -1,13 +1,16 @@
 ## NIXOS CYBERPUNK LOGIN SYSTEM (greetd + tuigreet)
+A minimal, security-focused login system built on NixOS using greetd and tuigreet, replacing traditional graphical display managers with a controlled, low-attack-surface authentication flow.
 
 ## Overview
-This project implements a minimal, security-conscious login system on NixOS using greetd and tuigreet, replacing traditional graphical display managers. The goal was to design a clean, reproducible, and low attack surface authentication flow while maintaining a cohesive cyberpunk-inspired terminal aesthetic.
+This project implements a lightweight login architecture designed to reduce system complexity while maintaining full control over authentication and session startup.
+
+Instead of relying on full graphical display managers, this system uses a terminal-based login interface backed by a declarative NixOS configuration, prioritizing reproducibility, transparency, and security.
 
 ## Screenshots
-  Login Screen (greetd + tuigreet)
+### Login Screen (greetd + tuigreet)
   - ![Login Screen](./Screenshots/greetd_tuigreet_loginscreen.jpeg)
 
-  i3 Desktop
+### i3 Desktop Environment
   - ![i3 Desktop](./Screenshots/i3.png)
 
 This project demonstrates:
@@ -16,42 +19,42 @@ This project demonstrates:
   - Security-focused decision making
   - Declarative configuration using NixOS
 
-## Features
+## Key Features
   - Terminal-based login UI using 'tuigreet'
-  - Lightweight display manager (greetd)
-  - Custom login banner (/etc/issue)
-  - Controlled session startup (startx -> i3)
+  - Lightweight display manager ('greetd')
+  - Custom login banner via '/etc/issue'
+  - Controlled session startup ('startx -> i3')
   - Fully declarative NixOS configuration
   - Consistent cyberpunk-inspired terminal styling
 
 ## Security Design & Considerations
 1. Minimal Display Stack
-   Instead of using a full desktop display manager such as SDDM or GDM, this system uses greetd and tuigreet, which:
+   Replaced traditional display managers (e.g., SDDM, GDM) with a minimal alternative:
    - Reduces dependency complexity
-   - Avoids large graphical login stacks
-   - Limits potential vulnerabilities in the authentication path
+   - Eliminates large GUI authentication layers
+   - Lowers attack surface in the login path
 
 2. Controlled Session Execution
-   User sessions are explicitly defined and launched via:
+   User sessions are explicitly defined:
    - tuigreet --cmd startx
 
    This ensures:
    - No unintended session execution
-   - Clear separation between authentication and user environment
+   - Clear separation between authentication and environment
    - Predictable and reproducible login behavior
 
 3. No Network-Exposed Services
-   - No remote access services (e.g., SSH, RDP, VNC) are enabled by default
-   - The system avoids unnecessary listening services
-   - Networking managed locally via NetworkManager
+   - No remote access services enabled (e.g., SSH, RDP, VNC)
+   - No unnecessary listening services
+   - Networking handeled locally via NetworkManager
 
 4. Principle of Least Privilege
    - Standard user operates without elevated privileges
-   - Administrative access restricted to the wheel group via sudo
+   - Administrative access restricted to the 'wheel' group via 'sudo'
    - Automatic login disabled
 
 5. Reproducibility & Integrity (NixOS)
-   - Declarative, version-controlled configuration
+   - Declarative, version-controlled system configuration
    - Changes are auditable and reversible
    - Reduces configuration drift and misconfiguration risk
 
@@ -61,22 +64,27 @@ This project demonstrates:
    - Reduces risk of UI-based attack vectors
 
 7. Trade-Offs
-   - Terminal-based login limits advanced graphical customization
-   - Additional configuration is required for full desktop environment features
+   - Limited graphical customization compared to full display managers
+   - Requires manual configuration for desktop integration
 
-These trade-offs were intentionally accepted to prioritize security, transparency, and system control.
+These trade-offs were intentionally accepted to prioritize control, security, and system transparency.
 
 ## Real-World Relevance
-The design choices in this project reflect practices used in:
-  - Hardened Linux environments where minimal services are preferred
-  - Server systems that avoid unnecessary graphical components
-  - Security-focused setups that prioritize reduced attack surface
+This project reflects real-world Linux and security engineering practices:
+  - Designing systems with reduced attack suface
+  - Eliminating unnecessary services in authentication paths
+  - Controlling system entry points and session behavior
+  - Building reproducible infrastructure using declarative configuration
 
-While simplified, the same principles apply to production systems where control, transparency, and reliability are critical.
+These principles are directly applicable to:
+  - Hardened Linux environments
+  - Server and minimal desktop systems
+  - Infrastructure and security-focused engineering roles
 
 ## Setup/Usage
 1. Enable greetd
 
+'''nix
 services.greetd = {
   enable = true;
   settings = {
@@ -100,20 +108,20 @@ services.greetd = {
      services.xserver.displayManager.startx.enable = true;
 
 3. Create login banner
-   - cat /etc/issue
-   - Customizable with ANSI styling as desired
+    cat /etc/issue
+    - Customizable with ANSI styling as desired
 
-4. Rebuild system
-   - sudo nixos-rebuild switch
+4. Apply Configuration
+    sudo nixos-rebuild switch
 
 ## Lessons Learned
-   - Debugging display managers requires understanding TTY vs graphical login flows
+   - Display manager debugging requires understanding TTY vs graphical login flows
    - Simpler systems are often more stable and secure
-   - greetd provides more control than traditional display managers
+   - greetd provides greater control than traditional display managers
    - Declarative systems (NixOS) make experimentation safer via rollbacks
    - Not all customization paths justify added complexity
 
 ## Future Improvements
-   - Optional Wayland-based graphical greeter (e.g., gtkgreet)
+   - Optional Wayland-based greeter (gtkgreet)
    - Expanded system theming (i3, Polybar, Rofi)
-   - Hardened remote access configuration (SSH with key-based authentication)
+   - Hardened remote access configuration (SSH with key-based authentication) 
