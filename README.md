@@ -85,22 +85,22 @@ These principles are directly applicable to:
 1. Enable greetd
 
 '''nix
- - services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = ''
-	  ${pkgs.tuigreet}/bin/tuigreet \
+- services.greetd = {
+  - enable = true;
+  - settings = {
+    - default_session = {
+      - command = ''
+	- ${pkgs.tuigreet}/bin/tuigreet \
 	    --time \
 	    --remember \
 	    --asterisks \
 	    --greeting "Authentication Required" \
 	    --cmd startx
-        '';
-        user = "greeter";
-      };
-    };
-  };
+      - '';
+      - user = "greeter";
+    - };
+  - };
+- };
 
 2. Configure X11 + i3
    - services.xserver.enable = true;
