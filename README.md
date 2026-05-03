@@ -108,11 +108,11 @@ services.greetd = {
      services.xserver.displayManager.startx.enable = true;
 
 3. Create login banner
-    cat /etc/issue
-    - Customizable with ANSI styling as desired
+   - cat /etc/issue
+   - Customizable with ANSI styling as desired
 
 4. Apply Configuration
-    sudo nixos-rebuild switch
+   - sudo nixos-rebuild switch
 
 ## Lessons Learned
    - Display manager debugging requires understanding TTY vs graphical login flows
