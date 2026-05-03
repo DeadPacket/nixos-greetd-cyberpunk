@@ -98,8 +98,8 @@ These principles are directly applicable to:
 	   --cmd startx
     - '';
     - user = "greeter";
-  - };
- - };
+-   };
+-  };
 - };
 
 2. Configure X11 + i3
