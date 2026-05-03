@@ -89,17 +89,17 @@ These principles are directly applicable to:
  - enable = true;
  - settings = {
   - default_session = {
-    - command = ''
-      - ${pkgs.tuigreet}/bin/tuigreet \
-	   --time \
-	   --remember \
-	   --asterisks \
-	   --greeting "Authentication Required" \
-	   --cmd startx
-    - '';
-    - user = "greeter";
-    - };
-  - };
+   - command = ''
+    - ${pkgs.tuigreet}/bin/tuigreet \
+	--time \
+	--remember \
+	--asterisks \
+	--greeting "Authentication Required" \
+	--cmd startx
+   - '';
+   - user = "greeter";
+-   };
+-  };
 - };
 
 2. Configure X11 + i3
